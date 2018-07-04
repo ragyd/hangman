@@ -28,7 +28,7 @@ app.get('/game', (req, res) => {
 app.get('/game', (req, res) => {
     Game.create()
         .then(game => {
-            res.send(game)            
+            res.send(game)  
         })
         .catch(err => {
             res.status(500).send({
