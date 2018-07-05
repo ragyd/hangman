@@ -1,12 +1,30 @@
-{
-	"12312": {
-        "id": 12312,
-        "hint": "_ _ _ _ A",
-        "leftAttempts": 5
-    },
-    "854712": {
-        "id": 854712,
-        "hint": "_ _ _ _ A",
-        "leftAttempts": 5
+[
+  {
+    "4276": {
+      "id": 4276,
+      "hint": "_ _ _ _ A",
+      "leftAttempts": 5
     }
-}
+  },
+  {
+    "9609": {
+      "id": 9609,
+      "hint": "_ _ _ _ A",
+      "leftAttempts": 5
+    }
+  },
+  {
+    "604": {
+      "id": 604,
+      "hint": "_ _ _ _ A",
+      "leftAttempts": 5
+    }
+  },
+  {
+    "6250": {
+      "id": 6250,
+      "hint": "_ _ _ _ A",
+      "leftAttempts": 5
+    }
+  }
+]
