@@ -1,5 +1,6 @@
 const fs = require('fs');
 let listGame = [];
+let idLast = 1;
 class Game {
 	constructor(data){
 		this.id = data.id;
@@ -10,7 +11,9 @@ class Game {
 	static create() {
 		return new Promise((resolve, reject) => {
 		const objectGame = Object.create(null)
-		let idGenerated = Math.floor(Math.random() * 10000);
+		//let idGenerated = Math.floor(Math.random() * 10000);
+		let idGenerated = idLast;
+		idLast++;
 		let newGame = {
 			id: idGenerated,
 			hint: '_ _ _ _ A',
