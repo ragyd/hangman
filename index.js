@@ -1,8 +1,11 @@
 const express = require('express')
 const app = express()
 const Dictionary = require('./src/dictionary.js')
-Dictionary.getWord().then(word => console.log('word: ', word))
-
+const Game = require('./src/game.js')
+let word = Dictionary.getWord().then(word => word);
+console.log('Wordddddddddd-'+ word);
+//word.then(word => console.log('word: ', word))
+/*
 app.get('/game', (req, res) => {
     res.send({
         id: 1,
@@ -23,11 +26,11 @@ app.get('/game', (req, res) => {
 `
     })
 })
-
+*/
 app.get('/game', (req, res) => {
     Game.create()
         .then(game => {
-            res.send(game)            
+            res.send(game)  
         })
         .catch(err => {
             res.status(500).send({
@@ -35,7 +38,6 @@ app.get('/game', (req, res) => {
             })
         })
 })
-
 app.listen(3000, () => {
     console.log('Example app listening on port 3000!')
 })

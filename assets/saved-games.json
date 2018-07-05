@@ -1,12 +1,30 @@
-{
-	"12312": {
-        "id": 12312,
-        "hint": "_ _ _ _ A",
-        "leftAttempts": 5
-    },
-    "854712": {
-        "id": 854712,
-        "hint": "_ _ _ _ A",
-        "leftAttempts": 5
+[
+  {
+    "1": {
+      "id": 1,
+      "hint": "_ _ _ _ A",
+      "leftAttempts": 5
     }
-}
+  },
+  {
+    "2": {
+      "id": 2,
+      "hint": "_ _ _ _ A",
+      "leftAttempts": 5
+    }
+  },
+  {
+    "3": {
+      "id": 3,
+      "hint": "_ _ _ _ A",
+      "leftAttempts": 5
+    }
+  },
+  {
+    "4": {
+      "id": 4,
+      "hint": "_ _ _ _ A",
+      "leftAttempts": 5
+    }
+  }
+]
