@@ -3,18 +3,23 @@ const Dictionary = require('./dictionary.js')
 const JSONDb = require('./json-db.js')
 
 class Game {
-	constructor({word, hint, leftAttempts = 5} = {}) {
+	constructor({word, hint, leftAttempts = 5, difficulty = 'easy', includePunctuation = 'false'} = {}) {
 		this.word = word
 		this.hint = hint
 		this.leftAttempts = leftAttempts
+		this.difficulty = difficulty
+		this.includePunctuation = includePunctuation
 	}
 
-	static create() {
-		return Dictionary.getWord()
+	static create({difficulty, includePunctuation, maxAttempts = 5} = {}) {
+		return Dictionary.getWordParams({difficulty, includePunctuation})
 			.then(word => {
 				const newGame = new Game({
 					word: word,
-					hint: Game.createHint(word)
+					hint: Game.createHint(word),
+					leftAttempts: maxAttempts,
+					difficulty: difficulty,
+					includePunctuation: includePunctuation
 				})
 				newGame.id = crypto.randomBytes(12).toString('hex');
 				return JSONDb.save(newGame)				

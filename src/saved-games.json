@@ -1,9 +1,4 @@
 {
-    "678c2608824f9c175c31a55e": {
-        "hint": "_ b _",
-        "leftAttempts": 5,
-        "id": "678c2608824f9c175c31a55e"
-    },
     "d813ec10f0d06cca98882a5c": {
         "word": "remolinaríais",
         "hint": "_ b _",
@@ -76,17 +71,5 @@
         "hint": "_ _ _ _ _ _ _ e _ _ _ _",
         "leftAttempts": 5,
         "id": "c41726fca40216719539a7b9"
-    },
-    "d185df893b204a8261583f65": {
-        "word": "malograrme",
-        "hint": "_ _ _ _ _ _ _ _ _ e",
-        "leftAttempts": 5,
-        "id": "d185df893b204a8261583f65"
-    },
-    "eadcebabecf3a2e402d59837": {
-        "word": "desensillar",
-        "hint": "_ _ s _ _ _ _ _ _ _ _",
-        "leftAttempts": 5,
-        "id": "eadcebabecf3a2e402d59837"
     }
 }
