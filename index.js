@@ -1,39 +1,42 @@
 const express = require('express')
+const bodyParser = require('body-parser');
 const app = express()
-const Dictionary = require('./src/dictionary.js')
-Dictionary.getWord().then(word => console.log('word: ', word))
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+const Game = require('./src/game.js')
 
 app.get('/game', (req, res) => {
-    res.send({
-        id: 1,
-        hint: '_ _ _ _ A',
-        leftAttempts: 5,
-        image: `
- |_____________
- |            | 
- |           ( )
- |            |
- |           /|\\
- |          / | \\
- |            |
- |           / \\
- |          /   \\
- |         /     \\
- |
-`
-    })
-})
-
-app.get('/game', (req, res) => {
+    console.log(req.query)
     Game.create()
         .then(game => {
             res.send(game)            
         })
         .catch(err => {
+            console.log(err)
             res.status(500).send({
                 error: 'Game could not be created'
             })
         })
+})
+
+app.post('/game/:gameId/attempt', (req, res) => {
+    const gameId = req.params.gameId
+    const attempt = req.body
+    Game.attempt(gameId, attempt)
+      .then(result => {
+        if (result.isGameOver) {
+          res.status(500).send({
+            error: 'You lose XD'
+          })
+        }
+        if (result.isInvalid) {
+          res.status(400).send(result)
+        }
+      })
+      .catch(err => {
+        console.log(err)
+      })
 })
 
 app.listen(3000, () => {
