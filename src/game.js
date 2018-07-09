@@ -17,7 +17,7 @@ class Game {
 				const newGame = new Game({
 					word: word,
 					hint: Game.createHint(word),
-					leftAttempts: maxAttempts,
+					leftAttempts: parseInt(maxAttempts),
 					difficulty: difficulty,
 					includePunctuation: includePunctuation
 				})
@@ -25,7 +25,7 @@ class Game {
 				return JSONDb.save(newGame)				
 			})
 			.then(savedGame => {
-				delete savedGame.word
+				//delete savedGame.word
 				return savedGame;
 			})
 	}
@@ -36,11 +36,18 @@ class Game {
 		const index = Math.floor(Math.random() * wordLength);
 		return Array.from(word).map((ch, i) => i === index ? ch : '_').join(' ')
 	}
+	
+	static viewLetter({word, letter, hint} = {}) {
+		//console.log(word + '-' + letter + '-', hint)
+		const wordLength = word.length
+		return Array.from(word).map((ch, i) => i === letter || i !== ' ' || i !== '_' ? ch : '_').join(' ')
+	}
 
 	static attempt(gameId, attempt) {
 		return JSONDb.getGameById(gameId)
 			.then(game => {
 				if (game.word.includes(attempt.letter)) {
+					game.hint= this.viewLetter({word: game.word, letter: attempt.letter, hint: game.hint})
 					// TODO udpate hint and save that
 					return game;
 				}

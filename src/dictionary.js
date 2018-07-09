@@ -8,8 +8,7 @@ class Dictionary {
 			  return totalWords[index];
 			})
 	}
-	//words.filter(word => word.length > 6);
-	//if(word.match(/[áéíóúÁÉÍÚÓ]/gi).length > 0)
+
 	static getWordParams({difficulty = 'easy', includePunctuation = 'false'}) {		
 			return readWords({path:'./assets/es-ES.dic'})
 			.then(totalWords => {
