@@ -3,24 +3,29 @@ const Dictionary = require('./dictionary.js')
 const JSONDb = require('./json-db.js')
 
 class Game {
-	constructor({word, hint, leftAttempts = 5} = {}) {
+	constructor({word, hint, leftAttempts = 5, difficulty = 'easy', includePunctuation = 'false'} = {}) {
 		this.word = word
 		this.hint = hint
 		this.leftAttempts = leftAttempts
+		this.difficulty = difficulty
+		this.includePunctuation = includePunctuation
 	}
 
-	static create() {
-		return Dictionary.getWord()
+	static create({difficulty, includePunctuation, maxAttempts = 5} = {}) {
+		return Dictionary.getWordParams({difficulty, includePunctuation})
 			.then(word => {
 				const newGame = new Game({
 					word: word,
-					hint: Game.createHint(word)
+					hint: Game.createHint(word),
+					leftAttempts: parseInt(maxAttempts),
+					difficulty: difficulty,
+					includePunctuation: includePunctuation
 				})
 				newGame.id = crypto.randomBytes(12).toString('hex');
 				return JSONDb.save(newGame)				
 			})
 			.then(savedGame => {
-				delete savedGame.word
+				//delete savedGame.word
 				return savedGame;
 			})
 	}
@@ -31,11 +36,18 @@ class Game {
 		const index = Math.floor(Math.random() * wordLength);
 		return Array.from(word).map((ch, i) => i === index ? ch : '_').join(' ')
 	}
+	
+	static viewLetter({word, letter, hint} = {}) {
+		//console.log(word + '-' + letter + '-', hint)
+		const wordLength = word.length
+		return Array.from(word).map((ch, i) => i === letter || i !== ' ' || i !== '_' ? ch : '_').join(' ')
+	}
 
 	static attempt(gameId, attempt) {
 		return JSONDb.getGameById(gameId)
 			.then(game => {
 				if (game.word.includes(attempt.letter)) {
+					game.hint= this.viewLetter({word: game.word, letter: attempt.letter, hint: game.hint})
 					// TODO udpate hint and save that
 					return game;
 				}
