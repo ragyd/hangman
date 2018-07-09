@@ -29,47 +29,5 @@
         "id": "0ae9dc5386103d5fe9e72e40",
         "isInvalid": true,
         "isGameOver": true
-    },
-    "fd2ed38a3bc6e146d7b66314": {
-        "word": "escamosas",
-        "hint": "_ _ c _ _ _ _ _ _",
-        "leftAttempts": 5,
-        "id": "fd2ed38a3bc6e146d7b66314"
-    },
-    "124cf31929fc9f0b736f40e9": {
-        "word": "dimiario",
-        "hint": "_ i _ _ _ _ _ _",
-        "leftAttempts": 5,
-        "id": "124cf31929fc9f0b736f40e9"
-    },
-    "b61e76d5fbad507dc26a4cca": {
-        "word": "amainábamos",
-        "hint": "_ _ _ _ _ _ _ a _ _ _",
-        "leftAttempts": 5,
-        "id": "b61e76d5fbad507dc26a4cca"
-    },
-    "738ba6d70e10f69c7c497c52": {
-        "word": "arparé",
-        "hint": "_ _ p _ _ _",
-        "leftAttempts": 5,
-        "id": "738ba6d70e10f69c7c497c52"
-    },
-    "43e02fc0a9fda0dd2007eb28": {
-        "word": "escogerlos",
-        "hint": "_ _ c _ _ _ _ _ _ _",
-        "leftAttempts": 5,
-        "id": "43e02fc0a9fda0dd2007eb28"
-    },
-    "be07e63805766abb63219fe1": {
-        "word": "ronquearemos",
-        "hint": "_ _ _ _ _ _ _ _ e _ _ _",
-        "leftAttempts": 5,
-        "id": "be07e63805766abb63219fe1"
-    },
-    "c41726fca40216719539a7b9": {
-        "word": "bastardeaste",
-        "hint": "_ _ _ _ _ _ _ e _ _ _ _",
-        "leftAttempts": 5,
-        "id": "c41726fca40216719539a7b9"
     }
 }

@@ -8,46 +8,44 @@ class Dictionary {
 			  return totalWords[index];
 			})
 	}
-	static getWordParams({difficulty = 'easy', includePunctuation = 'false'}) {
-		return readWords({path:'./assets/es-ES.dic'})
+	//words.filter(word => word.length > 6);
+	//if(word.match(/[áéíóúÁÉÍÚÓ]/gi).length > 0)
+	static getWordParams({difficulty = 'easy', includePunctuation = 'false'}) {		
+			return readWords({path:'./assets/es-ES.dic'})
 			.then(totalWords => {
-			  const index =  Math.floor(Math.random() * (totalWords.length + 1));	
-				const word = totalWords[index];
+			let words = [];
 			if(includePunctuation == 'false')
-				if(word.match(/[áéíóúÁÉÍÚÓ]/gi).length > 0)
-				{
-					console.log(word)
-					this.getWordParams({difficulty, includePunctuation})
-				}
-				else
-					return word;
-			return word;
-				//return this.getWordDifficulty(difficulty, includePunctuation,  totalWords[index])
+			{
+				if(difficulty == 'super-easy')
+					words = totalWords.filter(word => {
+						return ((word.match(/[áéíóúÁÉÍÚÓ]/ig) || []).length == 0) && word.length <= 5
+					});
+				if(difficulty == 'easy')
+					words = totalWords.filter(word => {
+						return ((word.match(/[áéíóúÁÉÍÚÓ]/ig) || []).length == 0) && word.length > 5 && word.length <= 8
+					});
+				if(difficulty == 'hard')
+					words = totalWords.filter(word => {
+						return ((word.match(/[áéíóúÁÉÍÚÓ]/ig) || []).length == 0) && word.length > 8
+					});
+			}
+			else{
+				if(difficulty == 'super-easy')
+					words = totalWords.filter(word => {
+						return word.length <= 5
+					});
+				if(difficulty == 'easy')
+					words = totalWords.filter(word => {
+						return word.length > 5 && word.length <= 8
+					});
+				if(difficulty == 'hard')
+					words = totalWords.filter(word => {
+						return word.length > 8
+					});	
+			}
+			const index =  Math.floor(Math.random() * (words.length + 1));	
+			return words[index];				
 			})
-	}
-	static getWordDifficulty(difficulty, includePunctuation, word) {
-		if(includePunctuation)
-		{
-			if(this.getPunctuation(word) > 0) 
-				this.getWordParams(difficulty, includePunctuation)
-			else return word;
-		}
-/*			if(difficulty === 'super-easy')
-			{
-				if(word.length < 5) return word; 
-				else this.getWordParams({difficulty, includePunctuation})
-			}		
-			else if(difficulty === 'easy')
-			{
-					if(word.length > 4 && word.length < 8) return word; 
-					else this.getWordParams({difficulty, includePunctuation})
-			}	
-			else
-			if(word.length > 7)
-			{
-				  console.log('*******************' + word.length)
-				  return word;
-			}	*/	
 	}
 }
 
